@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+    <key>Label</key>
+    <string>com.you.daily-five</string>
+    <key>ProgramArguments</key>
+    <array>
+        <string>/bin/zsh</string>
+        <string>{{/absolute/path/to/scripts/daily-five.sh}}</string>
+    </array>
+    <key>EnvironmentVariables</key>
+    <dict>
+        <key>VAULT_GARDENER_VAULT_PATH</key>
+        <string>{{/absolute/path/to/your/vault}}</string>
+    </dict>
+    <key>StartCalendarInterval</key>
+    <dict>
+        <key>Hour</key>
+        <integer>8</integer>
+        <key>Minute</key>
+        <integer>53</integer>
+    </dict>
+    <key>StandardOutPath</key>
+    <string>{{/absolute/path/to/state-dir}}/daily5-launchd.log</string>
+    <key>StandardErrorPath</key>
+    <string>{{/absolute/path/to/state-dir}}/daily5-launchd.log</string>
+</dict>
+</plist>

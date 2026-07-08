@@ -1,0 +1,28 @@
+# CLAUDE.md
+<!-- Put this file at the ROOT of your Obsidian vault. Claude Code auto-loads it whenever you work in that directory. -->
+
+## Who I Am
+<!-- A few sentences: your name, what you do, what you're building. This is the orientation a stranger-with-amnesia needs every session. -->
+
+## What I'm Working On
+<!-- 2-5 bullets, one per active thread, each linking to its project note -->
+- **{{Project A}}** — one line. See [[Projects/Project-A]].
+- **{{Project B}}** — one line. See [[Projects/Project-B]].
+
+## How This Vault Is Organized
+This is my second brain / knowledge base, managed in Obsidian. Full map: [[Meta/Vault-Map]].
+- **Inbox/** — quick captures, web clips, unprocessed notes (default drop for new notes).
+- **Projects/** — active, time-bound work.
+- **Areas/** — ongoing life/work responsibilities (health, career, finances…).
+- **Resources/** — evergreen reference material, docs, project docs.
+- **Archive/** — completed projects and outdated notes.
+- **Daily/** — daily resurfacing notes (see [[Meta/Daily-Five]]).
+- **Frontier/** — daily seed-planting notes (see [[Meta/Sower]]).
+- **Meta/** — system files, templates, and AI orientation files.
+
+## How I Want You to Work
+- Read the relevant folder's `_index.md` before working on anything in it.
+- New notes go in `Inbox/` by default unless I say otherwise.
+- Always write clean, plain Markdown.
+- Ask before deleting or overwriting files.
+- Keep responses concise.
