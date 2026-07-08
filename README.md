@@ -1,10 +1,12 @@
 # digital-twin-garden
 
-A self-organizing second brain: an Obsidian vault that [Claude Code](https://claude.com/claude-code) reads, maintains, and grows for you — on a schedule, with no human in the loop for the maintenance itself. The vault becomes a living digital twin of how you think and what you're working on, not just a pile of notes.
+A self-organizing second brain: an Obsidian vault that [Claude Code](https://claude.com/claude-code) reads, maintains, and grows for you — on a schedule, with no human in the loop for the maintenance itself. The vault becomes a living digital twin of how you think and what you're working on.
 
 ## The idea
 
-Claude Code is, per Claude Code's own developers, "the smartest person you've ever worked with... who wakes up every morning with total amnesia." Chat-based prompting fights that amnesia every session. This framework fixes it structurally instead: keep a plain-Markdown vault as durable, evolving context, and run three small scheduled agents against it so it never rots into a junk drawer.
+Claude Code is, per Claude Code's own developers, "the smartest person you've ever worked with... who wakes up every morning with total amnesia." 
+
+Chat-based prompting fights that amnesia every session. This framework fixes it structurally instead: keep a plain-Markdown vault as durable, evolving context, and run three small scheduled agents against it so it never rots into a junk drawer.
 
 **Context beats prompting.** A well-organized vault Claude can read is worth more than a clever prompt — it turns Claude from a stranger who needs re-onboarding into something closer to a teammate who already knows what you're doing.
 
