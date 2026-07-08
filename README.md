@@ -1,6 +1,6 @@
 # digital-twin-garden
 
-A self-organizing second brain: an Obsidian vault that [Claude Code](https://claude.com/claude-code) reads, maintains, and grows for you — on a schedule, with no human in the loop for the maintenance itself. The vault becomes a living digital twin of how you think and what you're working on, not just a pile of notes.
+A self-organizing second brain: an Obsidian vault that [Claude Code](https://claude.com/claude-code) , and CODEX read, maintain, and grow for you — on a schedule, with no human in the loop for the maintenance itself. The vault becomes a living digital twin of how you think and what you're working on.
 
 ## The idea
 
