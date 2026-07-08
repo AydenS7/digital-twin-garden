@@ -7,7 +7,8 @@ A plain-Markdown vault, maintained by scheduled [Claude Code](https://claude.com
 This is two things at once, and both matter:
 
 1. **A context store any agent can dip into.** Claude Code has no memory between sessions — every chat starts from zero. Point it at a well-organized vault instead, and it reads real, current context (what you're working on, what you've decided, how you think) instead of you re-explaining it every time. This part is passive: the vault just sits there as grounding, and any session — Claude Code, Codex, whatever — can read it.
-2. **An evolving digital twin.** The vault doesn't just store what's true today — it's actively kept in sync with you. Two small agents run on a schedule and change the vault itself: one keeps it organized (no rot, no dead links, no contradictions), one grows it (surfaces connections, gaps, and next steps you haven't written down yet). Over time the vault becomes less "notes about you" and more a live, self-updating model of how you think and what you're building — a twin, not an archive.
+2. **An evolving digital twin.** The vault doesn't just store what's true today — it's actively kept in sync with you. Two small agents run on a schedule and change the vault itself: one keeps it organized (no rot, no dead links, no contradictions), one grows it (surfaces connections, gaps, and next steps you haven't written down yet). Over time the vault becomes less "notes about you" and more a live, self-updating model of how you think and what you're building — a twin, not an archive. 
+(I took a few hours inputing "personality" into the vault so that it can think like me)
 
 Most "AI + notes" setups only do (1) — a folder Claude can read. The agents are what make it (2) as well: something that keeps itself accurate and keeps growing without you doing the maintenance.
 
