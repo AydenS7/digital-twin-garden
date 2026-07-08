@@ -16,9 +16,9 @@ Most "AI + notes" setups only do (1) — a folder Claude can read. The agents ar
 | Agent | Cadence | Job |
 |---|---|---|
 | **Gardener** | hourly | Empties the Inbox, rebalances the note tree, compacts stale/contradicted claims, fixes dead links. Never deletes — supersedes with a dated line. |
-| **Daily Five** | daily | Reads the whole vault (including any private "how I think" notes you keep) and hands you 5 things worth your attention: an idea or cross-project connection, a dangling thread, a pattern (a habit, or a value you're not living up to), an old note worth re-reading, a recall quiz. Anything worth tracking longer than a day gets promoted into `Frontier/`'s live-seeds list. |
+| **Sower** | daily | Reads the whole vault (including any private "how I think" notes you keep), finds connections nobody's drawn yet, and hands you 5 things worth your attention: a seed/cross-project connection, a dangling thread, a pattern (a habit, or a value you're not living up to), an old note worth re-reading, a recall quiz. Anything worth tracking longer than a day gets promoted into `Frontier/`'s live-seeds list. |
 
-Think of it like an actual garden: the **Gardener** tends what's already planted — weeds, structure, dead branches. **Daily Five** does double duty: it's the part that talks back to you every morning, and the part that walks the unplanted ground looking for where the next thing should grow.
+Think of it like an actual garden: the **Gardener** tends what's already planted — weeds, structure, dead branches. The **Sower** walks the unplanted ground looking for where the next thing should grow, and hands you what it found each morning.
 
 Neither agent deletes your work. Both cite their sources. Both are just a Markdown file (their "manual") plus a scheduler calling `claude -p --permission-mode acceptEdits`.
 
@@ -32,12 +32,12 @@ your-vault/
 ├── Areas/             # ongoing responsibilities
 ├── Resources/         # evergreen reference material
 ├── Archive/           # completed/dead projects, compacted notes
-├── Daily/             # Daily Five's dated notes
-├── Frontier/          # Daily Five's "live seeds" list
+├── Daily/             # Sower's dated notes
+├── Frontier/          # Sower's "live seeds" list
 └── Meta/
     ├── Vault-Map.md
     ├── Gardener.md
-    ├── Daily-Five.md
+    ├── Sower.md
     ├── Note-Template.md
     └── Project-Template.md
 ```
@@ -47,7 +47,7 @@ Every folder has an `_index.md` — that's the only "retrieval system" here. No 
 Three rules that make the tree work:
 - **Inbox is a mailbox, not storage** — nothing sits there past one Gardener pass.
 - **Supersede, don't delete** — a wrong or outdated claim gets struck through with a dated pointer to what replaced it, or moves to `Archive/` with a tombstone. History stays findable; the live view stays clean.
-- **Ownership is exclusive per folder** — the Gardener never touches `Daily/`/`Frontier/`; Daily Five never edits notes outside those two. Clean boundaries mean the agents can't fight each other.
+- **Ownership is exclusive per folder** — the Gardener never touches `Daily/`/`Frontier/`; the Sower never edits notes outside those two. Clean boundaries mean the agents can't fight each other.
 
 ## Setup
 
@@ -55,7 +55,7 @@ Three rules that make the tree work:
 2. Copy the scaffolding in: `cp -r Meta Frontier /path/to/your-vault/` then `mkdir -p /path/to/your-vault/{Inbox,Projects,Areas,Resources,Archive,Daily}`.
 3. Fill in `CLAUDE.md.template` (who you are, what you're working on) and drop it at your vault's root as `CLAUDE.md`.
 4. Optional: merge `global-CLAUDE.md.snippet` into `~/.claude/CLAUDE.md` so the capture rules (inbox everything, log every session, link liberally) apply across all your projects, not just this vault.
-5. Test the scripts: `export VAULT_GARDENER_VAULT_PATH=/path/to/your-vault`, then run `./scripts/gardener.sh` and `./scripts/daily-five.sh`.
+5. Test the scripts: `export VAULT_GARDENER_VAULT_PATH=/path/to/your-vault`, then run `./scripts/gardener.sh` and `./scripts/sower.sh`.
 6. Schedule them. macOS: copy `launchd/*.plist.template`, fill in the `{{...}}` placeholders, rename to drop `.template`, `launchctl load` it. Linux: `cron` or a `systemd --user` timer — the scripts are plain zsh/bash, no launchd dependency.
 7. Read `Daily/YYYY-MM-DD.md` each morning. That's the payoff: the vault talks back instead of just sitting there.
 

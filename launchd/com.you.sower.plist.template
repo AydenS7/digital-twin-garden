@@ -3,11 +3,11 @@
 <plist version="1.0">
 <dict>
     <key>Label</key>
-    <string>com.you.daily-five</string>
+    <string>com.you.sower</string>
     <key>ProgramArguments</key>
     <array>
         <string>/bin/zsh</string>
-        <string>{{/absolute/path/to/scripts/daily-five.sh}}</string>
+        <string>{{/absolute/path/to/scripts/sower.sh}}</string>
     </array>
     <key>EnvironmentVariables</key>
     <dict>
@@ -22,8 +22,8 @@
         <integer>53</integer>
     </dict>
     <key>StandardOutPath</key>
-    <string>{{/absolute/path/to/state-dir}}/daily5-launchd.log</string>
+    <string>{{/absolute/path/to/state-dir}}/sower-launchd.log</string>
     <key>StandardErrorPath</key>
-    <string>{{/absolute/path/to/state-dir}}/daily5-launchd.log</string>
+    <string>{{/absolute/path/to/state-dir}}/sower-launchd.log</string>
 </dict>
 </plist>
