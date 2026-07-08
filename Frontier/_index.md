@@ -1,13 +1,10 @@
 # Frontier
 
-Where the [[Meta/Sower]] plants seeds — connections, knowledge gaps, and growth suggestions the rest of the vault hasn't stated yet. Not a to-do list: seeds that turn out live get promoted here, most digests are disposable.
-
-## Daily digests
-(dated notes, one per day — newest first)
+Long-lived seeds — connections, knowledge gaps, and growth suggestions worth tracking past the day they were noticed. Maintained by [[Meta/Daily-Five]] (earlier versions of this framework had a separate Sower agent for this; it's merged in now — one daily run, one note).
 
 ## Live seeds
-(none yet)
+(none yet — Daily Five promotes an item here only when it's worth tracking past that day)
 
 ## Conventions
-- This folder is owned by [[Meta/Sower]] — the gardener and Daily Five don't touch it.
-- Digests are disposable by default. A seed only lives here past its digest day if it's still worth acting on.
+- This folder is owned by [[Meta/Daily-Five]] — the gardener doesn't touch it.
+- Only the "Live seeds" list is actively maintained; no dated digest files are written here.

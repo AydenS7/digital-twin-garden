@@ -4,21 +4,20 @@ A self-organizing second brain: an Obsidian vault that [Claude Code](https://cla
 
 ## The idea
 
-Claude Code is, per Claude Code's own developers, "the smartest person you've ever worked with... who wakes up every morning with total amnesia." Chat-based prompting fights that amnesia every session. This framework fixes it structurally instead: keep a plain-Markdown vault as durable, evolving context, and run three small scheduled agents against it so it never rots into a junk drawer.
+Claude Code is, per Claude Code's own developers, "the smartest person you've ever worked with... who wakes up every morning with total amnesia." Chat-based prompting fights that amnesia every session. This framework fixes it structurally instead: keep a plain-Markdown vault as durable, evolving context, and run two small scheduled agents against it so it never rots into a junk drawer.
 
 **Context beats prompting.** A well-organized vault Claude can read is worth more than a clever prompt — it turns Claude from a stranger who needs re-onboarding into something closer to a teammate who already knows what you're doing.
 
-The three agents:
+The two agents:
 
 | Agent | Cadence | Job |
 |---|---|---|
 | **Gardener** | hourly | Empties the Inbox, rebalances the note tree, compacts stale/contradicted claims, fixes dead links. Never deletes — supersedes with a dated line. |
-| **Daily Five** | daily (morning) | Reads the whole vault and hands you exactly 5 things worth your attention today: an idea, a dangling thread, a pattern, an old note worth re-reading, a recall quiz. |
-| **Sower** | daily | Reads *everything* (including your private "how I think" notes, if you keep one) and looks for connections across projects, unstated knowledge gaps, and where you should grow next. Writes a short daily digest to its own tree, `Frontier/`. |
+| **Daily Five** | daily | Reads *everything* (including your private "how I think" notes, if you keep one) and hands you exactly 5 things worth your attention today: an idea/cross-project connection, a dangling thread, a pattern (habit, or a value you're not living up to), an old note worth re-reading, a recall quiz. Promotes anything worth tracking longer than a day into `Frontier/`'s live-seeds list. |
 
-Think of it like an actual garden: the **Gardener** tends what's already planted (weeds, structure, dead branches). The **Sower** walks the unplanted ground looking for where the next thing should grow. **Daily Five** is the part that talks back to you every morning.
+Think of it like an actual garden: the **Gardener** tends what's already planted (weeds, structure, dead branches). **Daily Five** does double duty — it's the part that talks back to you every morning *and* the part that walks the unplanted ground looking for where the next thing should grow. (Earlier versions of this framework split that second job into a standalone "Sower" agent; it's simpler merged into one daily run.)
 
-None of these agents delete your work. All of them cite their sources. All of them are just a Markdown file (their "manual") plus a cron-like scheduler calling `claude -p` with `--permission-mode acceptEdits`.
+Neither agent deletes your work. Both cite their sources. Both are just a Markdown file (their "manual") plus a cron-like scheduler calling `claude -p` with `--permission-mode acceptEdits`.
 
 ## Vault structure
 
@@ -31,12 +30,11 @@ your-vault/
 ├── Resources/         # evergreen reference material
 ├── Archive/           # completed/dead projects, compacted notes
 ├── Daily/             # written by Daily Five — one dated note per day
-├── Frontier/          # written by Sower — one dated digest per day + a promoted "live seeds" list
+├── Frontier/          # maintained by Daily Five — a "live seeds" list, promoted from Daily notes
 └── Meta/
     ├── Vault-Map.md       # orientation: what's where
     ├── Gardener.md        # the Gardener's manual
     ├── Daily-Five.md      # the Daily Five's manual
-    ├── Sower.md           # the Sower's manual
     ├── Note-Template.md
     └── Project-Template.md
 ```
@@ -48,8 +46,8 @@ Every folder has an `_index.md` — that's the only "retrieval system" here. The
 - **Inbox is a mailbox, not storage.** Nothing should live there longer than one Gardener pass.
 - **Notes are supersede-don't-delete.** A wrong or outdated claim gets struck through with a dated pointer to what replaced it (`~~old claim~~ → superseded 2026-07-08 by [[new-note]]`), or the whole note moves to `Archive/` with a one-line tombstone left behind. History stays findable; the live view stays clean.
 - **Hub notes emerge, they aren't planned.** When a person, system, or theme shows up across 3+ notes, that's the Gardener's cue to build it a hub page.
-- **`Frontier/` is disposable by default.** Most daily seeds are just noticed-and-discarded. A seed only gets promoted to the vault's permanent "live seeds" list if it survives resurfacing — that's the filter against noise.
-- **Ownership is exclusive per folder.** The Gardener never touches `Daily/` or `Frontier/`; Daily Five and Sower never touch each other's folder or edit existing notes. Clean boundaries mean the agents can't fight each other or duplicate work.
+- **`Frontier/` is disposable by default.** Most daily ideas are just noticed-and-discarded. An item only gets promoted to the "live seeds" list if it's worth tracking past the day it was noticed — that's the filter against noise.
+- **Ownership is exclusive per folder.** The Gardener never touches `Daily/` or `Frontier/`; Daily Five never edits existing vault notes outside those two. Clean boundaries mean the agents can't fight each other or duplicate work.
 
 ## Setup
 
@@ -70,7 +68,6 @@ Every folder has an `_index.md` — that's the only "retrieval system" here. The
    export VAULT_GARDENER_VAULT_PATH=/path/to/your-vault
    ./scripts/gardener.sh      # test a manual pass
    ./scripts/daily-five.sh
-   ./scripts/sower.sh
    ```
 
 6. **Schedule them.** On macOS, copy the `launchd/*.plist.template` files, fill in the `{{...}}` placeholders (script path, vault path, a log directory), rename to drop `.template`, and load:
@@ -81,7 +78,7 @@ Every folder has an `_index.md` — that's the only "retrieval system" here. The
    ```
    On Linux, use `cron` or a `systemd --user` timer instead — the scripts themselves are plain zsh/bash and don't depend on launchd.
 
-7. **Read `Frontier/YYYY-MM-DD.md` and `Daily/YYYY-MM-DD.md` each morning.** That's the whole payoff: the vault talks back to you instead of just sitting there.
+7. **Read `Daily/YYYY-MM-DD.md` each morning** (and check `Frontier/_index.md` occasionally for the seeds that stuck). That's the whole payoff: the vault talks back to you instead of just sitting there.
 
 ## Why this works better than plain chat
 
